@@ -59,7 +59,7 @@ const TicTacToeGame = ({
           setDeclareWinner(turnPlayer === 1 ? 0 : 1);
           const l = gameStats.length;
           const temp = [...gameStats];
-          temp[l - 1].status = `${turnPlayer === 1 ? player1 : player2} won`;
+          temp[l - 1].status = `${turnPlayer === 1 ? player1 : player2} Won!`;
         }
       });
     }
@@ -73,7 +73,7 @@ const TicTacToeGame = ({
   };
   const handleNewGame = () => {
     const temp = [...gameStats];
-    temp.push({ playerx: player1, playery: player2, status: 'ongoing' });
+    temp.push({ playerx: player1, playery: player2, status: 'Ongoing' });
     setGameStats([...temp]);
     setGameGrid([
       ['', '', ''],

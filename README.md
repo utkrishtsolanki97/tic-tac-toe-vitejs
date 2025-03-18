@@ -1,12 +1,60 @@
-# React + Vite
+# Tic Tac Toe - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple Tic Tac Toe game built using React and Vite. It allows two players to play the classic Tic Tac Toe game in a web browser.
 
-Currently, two official plugins are available:
+## Features
+- Two-player mode
+- Simple and clean UI
+- Game status updates (ongoing, win, or draw)
+- Option to restart the game
+- Player name input before starting
+- Interactive game grid with real-time updates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
+![image](https://github.com/user-attachments/assets/cdbfc4e4-4eb4-4095-b4b1-d52637c65145)
+![image](https://github.com/user-attachments/assets/bc224225-cf75-48e3-90ba-9d1134073851)
+![image](https://github.com/user-attachments/assets/ffb211cb-7366-4e56-ac7b-69a596923e45)
+![image](https://github.com/user-attachments/assets/3c7aed61-5347-4943-a5a1-bd9c959050c7)
 
-## Expanding the ESLint configuration
+## Technologies Used
+- React
+- Vite
+- HTML & CSS
+- JavaScript
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to Play
+- Enter player names and start the game.
+- Players take turns marking X or O on the grid.
+- The first player to get three marks in a row (horizontally, vertically, or diagonally) wins.
+- If all cells are filled without a winner, the game ends in a draw.
+- Players can restart the game at any time.
+
+## Future Enhancements
+- Add AI for a single-player mode.
+- Improve UI/UX with animations.
+- Keep track of player scores across multiple games.
+
+## License
+This project is open-source and free to use.
+
+## Installation & Setup
+
+1. **Clone the repository:**
+```
+git clone <repository-url>
+cd tic-tac-toe
+```
+
+2. **Install dependencies:**
+```
+npm install
+```
+3. **Run the application:**
+```
+npm run dev
+```
+
+4. **Open the application in your browser at:**
+```
+http://localhost:5173
+```
