@@ -13,83 +13,77 @@ function App() {
   const [gameStats, setGameStats] = useState([]);
   return (
     <>
-      <div>
-        <h1>Tic Tac Toe</h1>
-      </div>
-      <>
-        {gameStart === 0 && (
-          <button onClick={(e) => setGameStart(1)}>Let's Get Started</button>
-        )}
-      </>
-      <>
-        {gameStart !== 0 && (
-          <button onClick={(e) => setGameStart(0)}>Reset The Game</button>
-        )}
-      </>
-      <>
-        {gameStart === 1 && (
-          <PlayerRegistration
-            player1={player1}
-            player2={player2}
-            setPlayer1={setPlayer1}
-            setPlayer2={setPlayer2}
-            setGameStart={setGameStart}
-            setGameStats={setGameStats}
-          />
-        )}
-      </>
-      <>
-        {gameStart === 2 && (
+      <div className='screenContainer'>
+        <div className='gameContainer'>
+          <div className='tttHeading'>
+            <h1>Tic Tac Toe</h1>
+          </div>
           <>
-            <>
-              <div>
-                Player X : <span>{player1}</span>
-              </div>
-              <div>
-                Player O : <span>{player2}</span>
-              </div>
-            </>
-            <>
-              <TicTacToeGame
-                turnPlayer={turnPlayer}
-                setTurnPlayer={setTurnPlayer}
+            {gameStart === 0 && (
+              <button onClick={(e) => setGameStart(1)}>Let's Get Started</button>
+            )}
+          </>
+          <>
+            {gameStart !== 0 && (
+              <button onClick={(e) => setGameStart(0)}>Start New Game</button>
+            )}
+          </>
+          <>
+            {gameStart === 1 && (
+              <PlayerRegistration
                 player1={player1}
                 player2={player2}
-                gameStart={gameStart}
+                setPlayer1={setPlayer1}
+                setPlayer2={setPlayer2}
                 setGameStart={setGameStart}
-                setDeclareWinner={setDeclareWinner}
-                declareWinner={declareWinner}
                 setGameStats={setGameStats}
-                gameStats={gameStats}
               />
-            </>
-            {declareWinner === 2 ? (
-              <>
-                <div>Oops! It was a DRAW!!</div>
-              </>
-            ) : (
-              declareWinner !== null && (
-                <>
-                  <div>
-                    Congratulations{' '}
-                    <b>{declareWinner === 0 ? player1 : player2}</b> You Won!!!
-                  </div>
-                </>
-              )
             )}
-            <br />
           </>
-        )}
-      </>
-      <>
-        {gameStart === 2 && (
-          <PlayerGameStats
-            gameStats={gameStats}
-            player1={player1}
-            player2={player2}
-          />
-        )}
-      </>
+          <>
+            {gameStart === 2 && (
+              <>
+                <div className='playerInformation'>
+                  <div className='playerName'>
+                    <span>Player X</span><span className='registeredPlayerName'>{player1}</span>
+                  </div>
+                  <div className='vsSpan'><span>VS</span></div>
+                  
+                  <div className='playerName'>
+                    <span>Player O</span><span className='registeredPlayerName'>{player2}</span>
+                  </div>
+                </div>
+                <>
+                  <TicTacToeGame
+                    turnPlayer={turnPlayer}
+                    setTurnPlayer={setTurnPlayer}
+                    player1={player1}
+                    player2={player2}
+                    gameStart={gameStart}
+                    setGameStart={setGameStart}
+                    setDeclareWinner={setDeclareWinner}
+                    declareWinner={declareWinner}
+                    setGameStats={setGameStats}
+                    gameStats={gameStats}
+                    setPlayer1={setPlayer1}
+                    setPlayer2={setPlayer2}
+                  />
+                </>
+                
+              </>
+            )}
+          </>
+          <>
+            {gameStart === 2 && (
+              <PlayerGameStats
+                gameStats={gameStats}
+                player1={player1}
+                player2={player2}
+              />
+            )}
+          </>
+        </div>
+      </div>
     </>
   );
 }

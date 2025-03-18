@@ -1,3 +1,30 @@
+.ticTacToeContainer {
+  padding: auto 10px;
+
+  .playerTurnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .leftCont {
+      width: 50%;
+      text-align: right;
+    }
+
+    .rightCont {
+      width: 50%;
+      text-align: left;
+      padding-left: 4px;
+    }
+  }
+
+  .tttGameContainer {
+    margin: auto 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 td {
   border: 1px solid black;
   width: 25px;

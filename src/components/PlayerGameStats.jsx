@@ -1,9 +1,11 @@
 import React from 'react';
+import './PlayerGameStats.css'
 
 const PlayerGameStats = ({ gameStats, player1, player2 }) => {
   return (
     <>
-      <div>GameStats</div>
+    <div className='statsContainer'>
+      <h3>Game Stats</h3>
       <table>
         <thead>
           <tr>
@@ -24,6 +26,7 @@ const PlayerGameStats = ({ gameStats, player1, player2 }) => {
           ))}
         </tbody>
       </table>
+      </div>
     </>
   );
 };
