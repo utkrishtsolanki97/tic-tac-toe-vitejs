@@ -10,6 +10,9 @@ const TicTacToeGame = ({
   setDeclareWinner,
   gameStats,
   setGameStats,
+  setGameStart,
+  setPlayer1,
+  setPlayer2
 }) => {
   const [gameGrid, setGameGrid] = useState([
     ['', '', ''],
@@ -79,40 +82,77 @@ const TicTacToeGame = ({
     ]);
     setDeclareWinner(null);
   };
+  const handleResetGame =() => {
+    setGameGrid([
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+    ])
+    setPlayer1('')
+    setPlayer2('')
+    setGameStart(1)
+    setTurnPlayer(0)
+    setDeclareWinner(null)
+    setGameStats([])
+  }
   return (
     <>
-      <div>
-        <br />
-        <label>Player Turn : {turnPlayer === 0 ? player1 : player2}</label>
-        <br />
-        <table>
-          <tbody>
-            {gameGrid.map((x, xid) => {
-              return (
-                <tr key={xid}>
-                  {x.map((y, yid) => (
-                    <td key={yid}>
-                      <button
-                        className="ticTacButton"
-                        onClick={() =>
-                          y === '' &&
-                          declareWinner === null &&
-                          handleClick(xid, yid)
-                        }
-                      >
-                        {y}
-                      </button>
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <br />
+      <div className='ticTacToeContainer'>
+        <div className='playerTurnContainer'>
+          <label className='leftCont'>Player Turn : </label>{" "}
+          <label className='rightCont'>{" "}{turnPlayer === 0 ? player1 : player2}</label>
+        </div>
+        <div className='tttGameContainer'>
+          <table>
+            <tbody>
+              {gameGrid.map((x, xid) => {
+                return (
+                  <tr key={xid}>
+                    {x.map((y, yid) => (
+                      <td key={yid}>
+                        <button
+                          className="ticTacButton"
+                          onClick={() =>
+                            y === '' &&
+                            declareWinner === null &&
+                            handleClick(xid, yid)
+                          }
+                        >
+                          {y}
+                        </button>
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         {declareWinner !== null && (
-          <button onClick={handleNewGame}>Start New Game</button>
+          <div className='declareResultContainer'>
+            <div className='declareResultContent'>
+              {declareWinner === 2 ? (
+                <div>
+                  <div>Oops! It was a DRAW!!</div>
+                </div>
+              ) : (
+                declareWinner !== null && (
+                  <div>
+                    <div>
+                      Congratulations{' '}
+                      <b>{declareWinner === 0 ? player1 : player2}</b> You Won!!!
+                    </div>
+                  </div>
+                )
+              )}
+              <div>
+                <button onClick={handleNewGame}>Rematch</button>
+                <button onClick={handleResetGame}>Start New Game</button>
+              </div>
+            </div>
+          </div>
         )}
+
       </div>
     </>
   );

@@ -1,0 +1,26 @@
+.registerContainer{
+    padding: 20px;
+    button{
+        margin: 20px;
+    }
+}
+.registerInputContainer{
+    padding: 5px;
+    label{
+        margin-right: 10px;
+    }
+    input{
+        background-color: #f0f0f0;
+        border-bottom: 1px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    input:focus-visible {
+        border-bottom: 3px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        outline: none;
+    }
+}

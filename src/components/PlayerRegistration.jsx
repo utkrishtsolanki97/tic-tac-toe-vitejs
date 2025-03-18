@@ -1,4 +1,5 @@
 import React from 'react';
+import './PlayerRegistration.css';
 
 const PlayerRegistration = ({
   player1,
@@ -10,13 +11,13 @@ const PlayerRegistration = ({
   setGameStats,
 }) => {
   return (
-    <div>
+    <div className='registerContainer'>
       <h4>Please Give the player Names</h4>
-      <div>
+      <div className='registerInputContainer'>
         <label>Player 1 Name</label>
         <input type="text" onChange={(e) => setPlayer1(e.target.value)} />
       </div>
-      <div>
+      <div className='registerInputContainer'>
         <label>Player 2 Name</label>
         <input type="text" onChange={(e) => setPlayer2(e.target.value)} />
       </div>

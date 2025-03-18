@@ -1,0 +1,38 @@
+.statsContainer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media screen and (min-width : 600px) {
+        width: 60%;
+        margin: 10px auto;
+        ;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    table {
+        border: 2px solid black;
+        
+
+        td {
+            border: 1px solid black;
+
+        }
+
+        th {
+            border: 2px solid black;
+        }
+        tr{
+            background-color: #ffffff;
+        }
+        tr:nth-child(even){
+            background-color: #d1d1d1;
+        }
+    }
+
+}
