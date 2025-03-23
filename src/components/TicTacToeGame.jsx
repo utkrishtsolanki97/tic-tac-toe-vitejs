@@ -47,21 +47,36 @@ const TicTacToeGame = ({
         y === '' ? (filled = 0) : '';
       })
     );
-    if (filled === 1) {
+    let wonFlag = 0;
+    wincombination.map((arr) => {
+      const check = checkWinner(arr, gameGrid);
+      if (check) {
+        setDeclareWinner(turnPlayer === 1 ? 0 : 1);
+        const l = gameStats.length;
+        const temp = [...gameStats];
+        temp[l - 1].status = `${turnPlayer === 1 ? player1 : player2} Won!`;
+        wonFlag = 1;
+      }
+    });
+    if (filled === 1 && wonFlag === 0) {
       setDeclareWinner(2);
       const l = gameStats.length;
       const temp = [...gameStats];
       temp[l - 1].status = `It was a draw`;
-    } else {
-      wincombination.map((arr) => {
-        const check = checkWinner(arr, gameGrid);
-        if (check) {
-          setDeclareWinner(turnPlayer === 1 ? 0 : 1);
-          const l = gameStats.length;
-          const temp = [...gameStats];
-          temp[l - 1].status = `${turnPlayer === 1 ? player1 : player2} Won!`;
+      wonFlag = 1;
+    }
+    if (filled === 0 && wonFlag === 0 && player2 === 'Computer' && turnPlayer === 1) {
+      let flag = 0;
+      for (let i = 0; flag !== 1; i++) {
+        const randomNumber = Math.floor(Math.random() * 10);
+        const x = Math.floor(randomNumber / 3) === 3 ? 2 : Math.floor(randomNumber / 3);
+        const y = randomNumber % 3;
+        console.log(gameGrid[x][y],x,y);
+        if (gameGrid[x][y] === '') {
+          handleClick(x, y);
+          flag = 1;
         }
-      });
+      }
     }
   }, [gameGrid]);
   const handleClick = (x, y) => {
@@ -82,7 +97,7 @@ const TicTacToeGame = ({
     ]);
     setDeclareWinner(null);
   };
-  const handleResetGame =() => {
+  const handleResetGame = () => {
     setGameGrid([
       ['', '', ''],
       ['', '', ''],

@@ -17,7 +17,7 @@ const PlayerGameStats = ({ gameStats, player1, player2 }) => {
         </thead>
         <tbody>
           {gameStats.map((game, id) => (
-            <tr>
+            <tr key={id}>
               <td>{id + 1}</td>
               <td>{player1}</td>
               <td>{player2}</td>
