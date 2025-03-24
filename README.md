@@ -14,6 +14,8 @@ This is a simple Tic Tac Toe game built using React and Vite. It allows two play
 
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/cdbfc4e4-4eb4-4095-b4b1-d52637c65145)
+![image](https://github.com/user-attachments/assets/68664325-cf7d-42d6-bc14-764545b3c331)
+![image](https://github.com/user-attachments/assets/1fcbf20a-6b37-4309-9a81-d2ee62168744)
 ![image](https://github.com/user-attachments/assets/bc224225-cf75-48e3-90ba-9d1134073851)
 ![image](https://github.com/user-attachments/assets/ffb211cb-7366-4e56-ac7b-69a596923e45)
 ![image](https://github.com/user-attachments/assets/3c7aed61-5347-4943-a5a1-bd9c959050c7)
