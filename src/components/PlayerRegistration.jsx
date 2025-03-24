@@ -9,6 +9,8 @@ const PlayerRegistration = ({
   setGameStart,
   gameStats,
   setGameStats,
+  difficultyLevel,
+  setDifficultyLevel
 }) => {
 
   const [playerMode, setPlayerMode] = useState(null);
@@ -41,6 +43,20 @@ const PlayerRegistration = ({
           playerMode === 0 && <div className='registerInputContainer'>
             <label>Player 2 Name</label>
             <input type="text" value={player2} disabled />
+          </div>
+        }
+        {
+          playerMode === 0 && <div className='registerInputContainer'>
+            <label>
+            Difficulty Level:
+              <select
+                value={difficultyLevel}
+                onChange={e => setDifficultyLevel(e.target.value)}
+              >
+                <option value="1">Easy </option>
+                <option value="2">Impossible</option>
+              </select>
+            </label>
           </div>
         }
         <div>

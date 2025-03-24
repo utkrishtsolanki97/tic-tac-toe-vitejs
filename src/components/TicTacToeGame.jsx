@@ -12,7 +12,8 @@ const TicTacToeGame = ({
   setGameStats,
   setGameStart,
   setPlayer1,
-  setPlayer2
+  setPlayer2,
+  difficultyLevel
 }) => {
   const [gameGrid, setGameGrid] = useState([
     ['', '', ''],
@@ -65,18 +66,21 @@ const TicTacToeGame = ({
       temp[l - 1].status = `It was a draw`;
       wonFlag = 1;
     }
-    if (filled === 0 && wonFlag === 0 && player2 === 'Computer' && turnPlayer === 1) {
+    if (filled === 0 && wonFlag === 0 && player2 === 'Computer' && turnPlayer === 1 && difficultyLevel==1) {
       let flag = 0;
       for (let i = 0; flag !== 1; i++) {
         const randomNumber = Math.floor(Math.random() * 10);
         const x = Math.floor(randomNumber / 3) === 3 ? 2 : Math.floor(randomNumber / 3);
         const y = randomNumber % 3;
-        console.log(gameGrid[x][y],x,y);
         if (gameGrid[x][y] === '') {
           handleClick(x, y);
           flag = 1;
         }
       }
+    }
+    if (filled === 0 && wonFlag === 0 && player2 === 'Computer' && turnPlayer === 1 && difficultyLevel==2) {
+      const x  = bestMove(gameGrid)
+      handleClick(x.row, x.col);
     }
   }, [gameGrid]);
   const handleClick = (x, y) => {
@@ -110,6 +114,81 @@ const TicTacToeGame = ({
     setDeclareWinner(null)
     setGameStats([])
   }
+  function bestMove(board) {
+    let bestScore = -Infinity;
+    let move = null;
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] === '') {
+          board[i][j] = 'O';
+          let score = minimax(board, 0, false);
+          board[i][j] = '';
+          if (score > bestScore) {
+            bestScore = score;
+            move = { row: i, col: j };
+          }
+        }
+      }
+    }
+    return move;
+  }
+
+  function minimax(board, depth, isMaximizing) {
+    let scores = { 'O': 1, 'X': -1, 'tie': 0 };
+    let result = checkWinnerAlgo(board);
+    if (result !== null) return scores[result];
+
+    if (isMaximizing) {
+      let bestScore = -Infinity;
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (board[i][j] === '') {
+            board[i][j] = 'O';
+            let score = minimax(board, depth + 1, false);
+            board[i][j] = '';
+            bestScore = Math.max(score, bestScore);
+          }
+        }
+      }
+      return bestScore;
+    } else {
+      let bestScore = Infinity;
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (board[i][j] === '') {
+            board[i][j] = 'X';
+            let score = minimax(board, depth + 1, true);
+            board[i][j] = '';
+            bestScore = Math.min(score, bestScore);
+          }
+        }
+      }
+      return bestScore;
+    }
+  }
+
+  function checkWinnerAlgo(board) {
+    let winningCombos = [
+      [[0, 0], [0, 1], [0, 2]], [[1, 0], [1, 1], [1, 2]], [[2, 0], [2, 1], [2, 2]], 
+      [[0, 0], [1, 0], [2, 0]], [[0, 1], [1, 1], [2, 1]], [[0, 2], [1, 2], [2, 2]], 
+      [[0, 0], [1, 1], [2, 2]], [[0, 2], [1, 1], [2, 0]]  
+    ];
+
+    for (let combo of winningCombos) {
+      let [a, b, c] = combo;
+      if (board[a[0]][a[1]] !== '' && board[a[0]][a[1]] === board[b[0]][b[1]] && board[a[0]][a[1]] === board[c[0]][c[1]]) {
+        return board[a[0]][a[1]];
+      }
+    }
+
+    if (board.flat().every(cell => cell !== '')) {
+      return 'tie';
+    }
+
+    return null;
+  }
+
   return (
     <>
       <div className='ticTacToeContainer'>

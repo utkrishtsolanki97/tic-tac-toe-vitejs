@@ -11,6 +11,7 @@ function App() {
   const [turnPlayer, setTurnPlayer] = useState(0);
   const [declareWinner, setDeclareWinner] = useState(null);
   const [gameStats, setGameStats] = useState([]);
+  const [difficultyLevel, setDifficultyLevel] = useState(null)
   return (
     <>
       <div className='screenContainer'>
@@ -37,6 +38,8 @@ function App() {
                 setPlayer2={setPlayer2}
                 setGameStart={setGameStart}
                 setGameStats={setGameStats}
+                setDifficultyLevel={setDifficultyLevel}
+                difficultyLevel={difficultyLevel}
               />
             )}
           </>
@@ -67,6 +70,7 @@ function App() {
                     gameStats={gameStats}
                     setPlayer1={setPlayer1}
                     setPlayer2={setPlayer2}
+                    difficultyLevel={difficultyLevel}
                   />
                 </>
                 
