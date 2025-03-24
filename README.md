@@ -6,6 +6,7 @@ This is a simple Tic Tac Toe game built using React and Vite. It allows two play
 
 ## Features
 - Two-player mode
+- Single-player mode with Easy and Impossible levels
 - Simple and clean UI
 - Game status updates (ongoing, win, or draw)
 - Option to restart the game
@@ -20,6 +21,7 @@ This is a simple Tic Tac Toe game built using React and Vite. It allows two play
 ![image](https://github.com/user-attachments/assets/ffb211cb-7366-4e56-ac7b-69a596923e45)
 ![image](https://github.com/user-attachments/assets/3c7aed61-5347-4943-a5a1-bd9c959050c7)
 
+
 ## Technologies Used
 - React
 - Vite
@@ -33,8 +35,20 @@ This is a simple Tic Tac Toe game built using React and Vite. It allows two play
 - If all cells are filled without a winner, the game ends in a draw.
 - Players can restart the game at any time.
 
+## 	Single-Player Mode 
+The single-player mode allows you to play against the computer. It includes two difficulty levels: 
+
+### Easy Mode 
+
+- Random Moves: In this mode, the computer makes random moves. It doesn't follow any specific strategy, making it easier for the player to win. 
+- Ideal for Beginners: This mode is perfect for those who are new to Tic Tac Toe and want to practice without much challenge. 
+
+### Impossible Mode 
+
+- Minimax Algorithm: This mode uses the minimax algorithm, which is a decision-making algorithm used in game theory and artificial intelligence. The computer evaluates all possible moves and selects the optimal one to either win or prevent the player from winning. 
+- Challenging Gameplay: This mode is designed to be unbeatable, providing a significant challenge even for experienced players. The computer will always make the best possible move, ensuring that it either wins or forces a draw.
+
 ## Future Enhancements
-- Add AI for a single-player mode.
 - Improve UI/UX with animations.
 - Keep track of player scores across multiple games.
 
